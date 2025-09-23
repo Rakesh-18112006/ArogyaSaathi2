@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { toast } from "react-toastify";
 import axiosInstance from "../../api/axiosInstance";
+import DriverTour from "../../components/DriverTour";
 import "./Dashboard.css";
 
 interface Migrant {
@@ -31,6 +32,7 @@ export default function Dashboard() {
   const [migrant, setMigrant] = useState<Migrant | null>(null);
   const [activeTab, setActiveTab] = useState("overview");
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isTourActive, setIsTourActive] = useState(false);
   const navigate = useNavigate();
   const { t } = useTranslation();
 
@@ -195,11 +197,11 @@ export default function Dashboard() {
                 >
                   <div className="dashboard-record-header">
                     <h4 className="dashboard-record-title">{record.title}</h4>
-                    <span className="dashboard-record-date">{new Date(record.createdAt).toLocaleDateString()}</span>
+                    <span className="dashboard-record-date">
+                      {new Date(record.createdAt).toLocaleDateString()}
+                    </span>
                   </div>
-                  <p className="dashboard-record-details">
-                    {record.content}
-                  </p>
+                  <p className="dashboard-record-details">{record.content}</p>
                   <div className="dashboard-record-type">{record.type}</div>
                 </motion.div>
               ))}
@@ -415,9 +417,21 @@ export default function Dashboard() {
 
       <div className="dashboard-main">
         <div className="dashboard-header">
-          <h1 className="dashboard-title">
-            {t(`migrant.dashboard.${activeTab}`)}
-          </h1>
+          <div className="dashboard-header-left">
+            <h1 className="dashboard-title">
+              {t(`migrant.dashboard.${activeTab}`)}
+            </h1>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="dashboard-btn dashboard-btn-secondary"
+              onClick={() => setIsTourActive(true)}
+              style={{ marginLeft: "1rem" }}
+            >
+              <i className="fas fa-info-circle"></i>
+              Help
+            </motion.button>
+          </div>
           <div
             className="dashboard-mobile-menu-btn"
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
@@ -428,6 +442,11 @@ export default function Dashboard() {
 
         <div className="dashboard-content">{renderContent()}</div>
       </div>
+      <DriverTour
+        isActive={isTourActive}
+        onComplete={() => setIsTourActive(false)}
+        tourType="migrant"
+      />
     </div>
   );
 }

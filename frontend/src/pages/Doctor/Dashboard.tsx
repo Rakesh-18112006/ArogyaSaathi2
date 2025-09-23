@@ -6,6 +6,7 @@ import { Html5QrcodeScanner } from "html5-qrcode";
 import { motion } from "framer-motion";
 import "./DoctorDashboard.css";
 import axiosInstance from "../../api/axiosInstance";
+import DriverTour from "../../components/DriverTour";
 
 // Default values for demonstration
 const DEFAULT_DOCTOR = {
@@ -35,6 +36,7 @@ export default function Dashboard() {
   // new state for AI summary
   const [summary, setSummary] = useState<string | null>(null);
   const [isLoadingSummary, setIsLoadingSummary] = useState(false);
+  const [isTourActive, setIsTourActive] = useState(false);
 
   const scannerRef = useRef<Html5QrcodeScanner | null>(null);
 
@@ -490,9 +492,24 @@ export default function Dashboard() {
               ? "My Profile"
               : activeTab}
           </h1>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="doctor-btn doctor-btn-secondary"
+            onClick={() => setIsTourActive(true)}
+            style={{ marginLeft: "1rem" }}
+          >
+            <i className="fas fa-info-circle"></i>
+            Help
+          </motion.button>
         </div>
         <div className="doctor-content">{renderContent()}</div>
       </div>
+      <DriverTour
+        isActive={isTourActive}
+        onComplete={() => setIsTourActive(false)}
+        tourType="doctor"
+      />
     </div>
   );
 }

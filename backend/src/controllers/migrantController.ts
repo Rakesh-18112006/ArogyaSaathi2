@@ -79,11 +79,11 @@ export async function registerMigrant(req: Request, res: Response) {
  */
 export async function verifyMigrantOtp(req: Request, res: Response) {
   try {
-    const { migrantId, otp } = req.body;
-    if (!migrantId || !otp)
-      return res.status(400).json({ message: "migrantId & otp required" });
+    const { phone, otp } = req.body;
+    if (!phone || !otp)
+      return res.status(400).json({ message: "phone & otp required" });
 
-    const migrant = await Migrant.findById(migrantId);
+    const migrant = await Migrant.findOne({ phone });
     if (!migrant) return res.status(404).json({ message: "migrant not found" });
 
     if (!migrant.otp || migrant.otp !== otp) {
