@@ -51,6 +51,107 @@
   color: #0c4a6e;
   margin-bottom: 10px;
 }
+/* Phone Input Styles */
+.registration-phone-input-container {
+  display: flex;
+  align-items: center;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.registration-phone-input-container:focus-within {
+  border-color: #0ea5e9;
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2);
+}
+
+.registration-phone-prefix {
+  padding: 15px 20px;
+  background: #f8fafc;
+  border-right: 2px solid #e2e8f0;
+  color: #64748b;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.registration-phone-input {
+  border: none !important;
+  box-shadow: none !important;
+  flex: 1;
+}
+
+.registration-phone-hint {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+/* Password Hint */
+.registration-password-hint {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+/* Review Info Styles */
+.registration-review-info {
+  background: #f9fafb;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.registration-review-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.registration-review-item:last-child {
+  border-bottom: none;
+}
+
+.registration-review-item strong {
+  color: #374151;
+  font-weight: 600;
+}
+
+.registration-review-item span {
+  color: #6b7280;
+  text-align: right;
+}
+
+/* Button Styles */
+.registration-button-primary {
+  background: linear-gradient(135deg, #10b981 0%, #047857 100%) !important;
+}
+
+.registration-button-secondary {
+  background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%) !important;
+}
+
+/* Responsive Design for Phone Input */
+@media (max-width: 480px) {
+  .registration-phone-prefix {
+    padding: 12px 15px;
+    font-size: 0.9rem;
+  }
+  
+  .registration-review-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+  
+  .registration-review-item span {
+    text-align: left;
+  }
+}
 
 .registration-subtitle {
   font-size: 1.1rem;

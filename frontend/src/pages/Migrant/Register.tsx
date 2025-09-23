@@ -22,9 +22,64 @@ export default function Register() {
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => setForm({ ...form, [e.target.name]: e.target.value });
+  ) => {
+    const { name, value } = e.target;
+
+    if (name === "phone") {
+      // Remove any non-digit characters
+      const cleanedValue = value.replace(/\D/g, "");
+
+      // If it starts with 91, ensure +91 prefix
+      if (cleanedValue.startsWith("91") && cleanedValue.length > 2) {
+        setForm({ ...form, phone: `+${cleanedValue}` });
+      }
+      // If it doesn't start with 91 but has 10 digits, add +91
+      else if (cleanedValue.length === 10) {
+        setForm({ ...form, phone: `+91${cleanedValue}` });
+      }
+      // If user is typing and it's less than 10 digits, just update the number
+      else if (cleanedValue.length > 0 && cleanedValue.length <= 10) {
+        setForm({ ...form, phone: `+91${cleanedValue}` });
+      }
+      // If user clears the field, clear it completely
+      else if (cleanedValue.length === 0) {
+        setForm({ ...form, phone: "" });
+      }
+    } else {
+      setForm({ ...form, [name]: value });
+    }
+  };
+
+  const handlePhoneBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+    const value = e.target.value.replace(/\D/g, "");
+
+    // Ensure the phone number has exactly 10 digits after +91
+    if (value.length === 10) {
+      setForm({ ...form, phone: `+91${value}` });
+    } else if (value.length > 0 && value.length < 10) {
+      // If incomplete number, show error or keep as is
+      toast.warning("Please enter a valid 10-digit phone number");
+    }
+  };
 
   const nextStep = () => {
+    // Validate current step before proceeding
+    if (currentStep === 1) {
+      if (!form.name.trim()) {
+        toast.error("Please enter your name");
+        return;
+      }
+      if (!form.phone || form.phone.replace(/\D/g, "").length !== 12) {
+        // +91 + 10 digits = 12
+        toast.error("Please enter a valid 10-digit phone number");
+        return;
+      }
+      if (!form.password || form.password.length < 6) {
+        toast.error("Password must be at least 6 characters long");
+        return;
+      }
+    }
+
     if (currentStep < 3) setCurrentStep(currentStep + 1);
   };
 
@@ -36,6 +91,13 @@ export default function Register() {
     e.preventDefault();
     setIsLoading(true);
 
+    // Final validation
+    if (!form.phone || form.phone.replace(/\D/g, "").length !== 12) {
+      toast.error("Please enter a valid phone number");
+      setIsLoading(false);
+      return;
+    }
+
     try {
       await axiosInstance.post("/migrants/register", form);
       toast.success(t("otpVerification.enterOTP"));
@@ -45,6 +107,17 @@ export default function Register() {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const formatPhoneDisplay = (phone: string) => {
+    if (!phone) return "";
+
+    const digits = phone.replace(/\D/g, "");
+    if (digits.length === 12) {
+      // 91 + 10 digits
+      return `+${digits.slice(0, 2)} ${digits.slice(2, 7)} ${digits.slice(7)}`;
+    }
+    return phone;
   };
 
   const renderStep = () => {
@@ -64,6 +137,7 @@ export default function Register() {
               <input
                 name="name"
                 placeholder={t("migrantRegister.name")}
+                value={form.name}
                 onChange={handleChange}
                 className="registration-input"
                 required
@@ -74,14 +148,23 @@ export default function Register() {
               <label className="registration-input-label">
                 {t("phoneNumber")}
               </label>
-              <input
-                name="phone"
-                type="tel"
-                placeholder={t("phoneNumber")}
-                onChange={handleChange}
-                className="registration-input"
-                required
-              />
+              <div className="registration-phone-input-container">
+                <div className="registration-phone-prefix">+91</div>
+                <input
+                  name="phone"
+                  type="tel"
+                  placeholder="Enter your 10-digit phone number"
+                  value={form.phone.replace("+91", "")}
+                  onChange={handleChange}
+                  onBlur={handlePhoneBlur}
+                  className="registration-input registration-phone-input"
+                  maxLength={10}
+                  required
+                />
+              </div>
+              <div className="registration-phone-hint">
+                Enter your 10-digit mobile number
+              </div>
             </div>
 
             <div className="registration-input-group">
@@ -93,8 +176,10 @@ export default function Register() {
                   type={showPassword ? "text" : "password"}
                   name="password"
                   placeholder={t("password")}
+                  value={form.password}
                   onChange={handleChange}
                   className="registration-input"
+                  minLength={6}
                   required
                 />
                 <span
@@ -107,6 +192,9 @@ export default function Register() {
                     }`}
                   ></i>
                 </span>
+              </div>
+              <div className="registration-password-hint">
+                Password must be at least 6 characters long
               </div>
             </div>
           </motion.div>
@@ -127,8 +215,10 @@ export default function Register() {
               <input
                 type="date"
                 name="dob"
+                value={form.dob}
                 onChange={handleChange}
                 className="registration-input"
+                max={new Date().toISOString().split("T")[0]}
                 required
               />
             </div>
@@ -139,6 +229,7 @@ export default function Register() {
               </label>
               <select
                 name="gender"
+                value={form.gender}
                 onChange={handleChange}
                 className="registration-select"
                 required
@@ -156,6 +247,7 @@ export default function Register() {
               </label>
               <select
                 name="language"
+                value={form.language}
                 onChange={handleChange}
                 className="registration-select"
                 required
@@ -196,30 +288,27 @@ export default function Register() {
                 {t("migrantRegister.reviewInfo")}
               </h3>
 
-              <div
-                style={{
-                  backgroundColor: "#f9fafb",
-                  padding: "15px",
-                  borderRadius: "10px",
-                  marginBottom: "20px",
-                }}
-              >
-                <p>
-                  <strong>{t("migrantRegister.name")}:</strong> {form.name}
-                </p>
-                <p>
-                  <strong>{t("phoneNumber")}:</strong> {form.phone}
-                </p>
-                <p>
-                  <strong>{t("migrantRegister.dob")}:</strong> {form.dob}
-                </p>
-                <p>
-                  <strong>{t("migrantRegister.gender")}:</strong> {form.gender}
-                </p>
-                <p>
-                  <strong>{t("migrantRegister.language")}:</strong>{" "}
-                  {form.language}
-                </p>
+              <div className="registration-review-info">
+                <div className="registration-review-item">
+                  <strong>{t("migrantRegister.name")}:</strong>
+                  <span>{form.name}</span>
+                </div>
+                <div className="registration-review-item">
+                  <strong>{t("phoneNumber")}:</strong>
+                  <span>{formatPhoneDisplay(form.phone)}</span>
+                </div>
+                <div className="registration-review-item">
+                  <strong>{t("migrantRegister.dob")}:</strong>
+                  <span>{form.dob || "Not provided"}</span>
+                </div>
+                <div className="registration-review-item">
+                  <strong>{t("migrantRegister.gender")}:</strong>
+                  <span>{form.gender || "Not provided"}</span>
+                </div>
+                <div className="registration-review-item">
+                  <strong>{t("migrantRegister.language")}:</strong>
+                  <span>{form.language || "Not provided"}</span>
+                </div>
               </div>
             </div>
           </motion.div>
@@ -271,11 +360,7 @@ export default function Register() {
                   <button
                     type="button"
                     onClick={prevStep}
-                    className="registration-button"
-                    style={{
-                      background:
-                        "linear-gradient(135deg, #6b7280 0%, #4b5563 100%)",
-                    }}
+                    className="registration-button registration-button-secondary"
                   >
                     <i className="fas fa-arrow-left"></i>
                     {t("back")}
@@ -286,7 +371,7 @@ export default function Register() {
                   <button
                     type="button"
                     onClick={nextStep}
-                    className="registration-button"
+                    className="registration-button registration-button-primary"
                   >
                     {t("next")}
                     <i className="fas fa-arrow-right"></i>
@@ -294,7 +379,7 @@ export default function Register() {
                 ) : (
                   <button
                     type="submit"
-                    className="registration-button"
+                    className="registration-button registration-button-primary"
                     disabled={isLoading}
                   >
                     {isLoading ? (

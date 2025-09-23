@@ -94,6 +94,7 @@ const resources = {
           accessFeatures:
             "Access patient records, manage appointments, and provide healthcare services",
           processing: "Logging in...",
+          
         },
         dashboard: {
           title: "Doctor Dashboard",
@@ -422,6 +423,285 @@ const resources = {
       },
     },
   },
+  bn: {
+    translation: {
+      // Common
+      appName: "আরোগ্য সাথী",
+      loading: "লোড হচ্ছে...",
+      error: "ত্রুটি",
+      success: "সফল",
+      submit: "জমা দিন",
+      cancel: "বাতিল",
+      back: "পিছনে",
+      next: "পরবর্তী",
+      save: "সংরক্ষণ",
+      userType: {
+        migrant: "অভিবাসী",
+        doctor: "ডাক্তার",
+      },
+
+      // Navigation
+      home: "হোম",
+      dashboard: "ড্যাশবোর্ড",
+      profile: "প্রোফাইল",
+      logout: "লগ আউট",
+
+      // Auth - Common
+      login: "লগইন",
+      register: "নিবন্ধন",
+      phoneNumber: "ফোন নম্বর",
+      password: "পাসওয়ার্ড",
+      confirmPassword: "পাসওয়ার্ড নিশ্চিত করুন",
+      forgotPassword: "পাসওয়ার্ড ভুলে গেছেন?",
+      otpVerification: "ওটিপি যাচাইকরণ",
+      enterOTP: "আপনার ফোনে পাঠানো ওটিপি লিখুন",
+      resendOTP: "ওটিপি পুনরায় পাঠান",
+      verifyOTP: "ওটিপি যাচাই করুন",
+
+      // Landing
+      landing: {
+        heroTitle: "আপনার স্বাস্থ্য, আমাদের অগ্রাধিকার",
+        heroSubtitle:
+          "অভিবাসীদের স্বাস্থ্যসেবার সাথে সংযোগ করা এবং ডাক্তারদের আরও ভাল সেবা দেওয়ার জন্য সরঞ্জাম প্রদান",
+        welcome: "আরোগ্য সাথীতে স্বাগতম",
+        feature1: "স্বাস্থ্য রেকর্ড",
+        feature2: "ডাক্তার পরামর্শ",
+        feature3: "অ্যাপয়েন্টমেন্ট বুকিং",
+        footer: "© 2025 আরোগ্য সাথী। সর্বস্বত্ব সংরক্ষিত।",
+      },
+
+      // Migrant Registration
+      migrantRegister: {
+        title: "অভিবাসী নিবন্ধন",
+        name: "পূর্ণ নাম",
+        age: "বয়স",
+        gender: "লিঙ্গ",
+        male: "পুরুষ",
+        female: "মহিলা",
+        other: "অন্যান্য",
+        state: "রাজ্য",
+        city: "শহর",
+        address: "ঠিকানা",
+        occupation: "পেশা",
+        emergencyContact: "জরুরি যোগাযোগ",
+        registerSuccess: "নিবন্ধন সফল!",
+      },
+
+      // Doctor Dashboard
+      doctor: {
+        login: {
+          title: "ডাক্তার লগইন",
+          email: "ইমেইল",
+          invalidCredentials: "অবৈধ ইমেইল বা পাসওয়ার্ড",
+        },
+        dashboard: {
+          title: "ডাক্তার ড্যাশবোর্ড",
+          patients: "রোগীরা",
+          appointments: "অ্যাপয়েন্টমেন্ট",
+          records: "স্বাস্থ্য রেকর্ড",
+          analytics: "বিশ্লেষণ",
+          newPatients: "নতুন রোগী",
+          totalPatients: "মোট রোগী",
+          recentRecords: "সাম্প্রতিক রেকর্ড",
+        },
+        analytics: {
+          title: "বিশ্লেষণ",
+          patientStatistics: "রোগীর পরিসংখ্যান",
+          diseaseDistribution: "রোগের বিতরণ",
+          ageGroups: "বয়স গ্রুপ",
+          monthlyTrends: "মাসিক প্রবণতা",
+        },
+      },
+
+      // Migrant Dashboard
+      migrant: {
+        dashboard: {
+          title: "আমার স্বাস্থ্য পোর্টাল",
+          myRecords: "আমার স্বাস্থ্য রেকর্ড",
+          upcomingAppointments: "আসন্ন অ্যাপয়েন্টমেন্ট",
+          medications: "বর্তমান ওষুধ",
+          recentVisits: "সাম্প্রতিক হাসপাতাল ভিজিট",
+          healthStatus: "স্বাস্থ্যের অবস্থা",
+          documents: "মেডিকেল ডকুমেন্ট",
+        },
+        records: {
+          addRecord: "স্বাস্থ্য রেকর্ড যোগ করুন",
+          viewRecord: "রেকর্ড দেখুন",
+          deleteRecord: "রেকর্ড মুছুন",
+          recordType: "রেকর্ডের ধরন",
+          diagnosis: "রোগ নির্ণয়",
+          prescription: "প্রেসক্রিপশন",
+          date: "তারিখ",
+          doctor: "ডাক্তার",
+          hospital: "হাসপাতাল",
+        },
+      },
+
+      // Health Records
+      healthRecord: {
+        title: "স্বাস্থ্য রেকর্ড",
+        type: "ধরন",
+        description: "বিবরণ",
+        symptoms: "লক্ষণ",
+        diagnosis: "রোগ নির্ণয়",
+        treatment: "চিকিৎসা",
+        medications: "ওষুধ",
+        nextVisit: "পরবর্তী সাক্ষাতের তারিখ",
+        attachments: "সংযুক্তি",
+      },
+
+      // Errors
+      errors: {
+        required: "এই ক্ষেত্রটি আবশ্যক",
+        invalidPhone: "অবৈধ ফোন নম্বর",
+        invalidEmail: "অবৈধ ইমেইল",
+        passwordMismatch: "পাসওয়ার্ড মিলছে না",
+        weakPassword: "পাসওয়ার্ড খুব দুর্বল",
+        serverError: "সার্ভার ত্রুটি ঘটেছে",
+        networkError: "নেটওয়ার্ক ত্রুটি ঘটেছে",
+      },
+    },
+  },
+  ml: {
+    translation: {
+      // Common
+      appName: "ആരോഗ്യ സാഥി",
+      loading: "ലോഡ് ചെയ്യുന്നു...",
+      error: "പിശക്",
+      success: "വിജയം",
+      submit: "സമർപ്പിക്കുക",
+      cancel: "റദ്ദാക്കുക",
+      back: "തിരികെ",
+      next: "അടുത്തത്",
+      save: "സേവ് ചെയ്യുക",
+      userType: {
+        migrant: "കുടിയേറ്റക്കാരൻ",
+        doctor: "ഡോക്ടർ",
+      },
+
+      // Navigation
+      home: "ഹോം",
+      dashboard: "ഡാഷ്ബോർഡ്",
+      profile: "പ്രൊഫൈൽ",
+      logout: "ലോഗ് ഔട്ട്",
+
+      // Auth - Common
+      login: "ലോഗിൻ",
+      register: "രജിസ്റ്റർ",
+      phoneNumber: "ഫോൺ നമ്പർ",
+      password: "പാസ്വേഡ്",
+      confirmPassword: "പാസ്വേഡ് സ്ഥിരീകരിക്കുക",
+      forgotPassword: "പാസ്വേഡ് മറന്നുപോയോ?",
+      otpVerification: "OTP പരിശോധന",
+      enterOTP: "നിങ്ങളുടെ ഫോണിലേക്ക് അയച്ച OTP നൽകുക",
+      resendOTP: "OTP വീണ്ടും അയയ്ക്കുക",
+      verifyOTP: "OTP പരിശോധിക്കുക",
+
+      // Landing
+      landing: {
+        heroTitle: "നിങ്ങളുടെ ആരോഗ്യം, ഞങ്ങളുടെ മുൻഗണന",
+        heroSubtitle:
+          "കുടിയേറ്റക്കാരെ ആരോഗ്യ സേവനങ്ങളുമായി ബന്ധിപ്പിക്കുകയും ഡോക്ടർമാർക്ക് മികച്ച സേവനം നൽകാനുള്ള ഉപകരണങ്ങൾ നൽകുകയും ചെയ്യുന്നു",
+        welcome: "ആരോഗ്യ സാഥിയിലേക്ക് സ്വാഗതം",
+        feature1: "ആരോഗ്യ രേഖകൾ",
+        feature2: "ഡോക്ടർ കൺസൾട്ടേഷനുകൾ",
+        feature3: "അപ്പോയിന്റ്മെന്റ് ബുക്കിംഗ്",
+        footer:
+          "© 2025 ആരോഗ്യ സാഥി. എല്ലാ അവകാശങ്ങളും സംരക്ഷിക്കപ്പെട്ടിരിക്കുന്നു.",
+      },
+
+      // Migrant Registration
+      migrantRegister: {
+        title: "കുടിയേറ്റക്കാരന്റെ രജിസ്ട്രേഷൻ",
+        name: "പൂർണ്ണ നാമം",
+        age: "പ്രായം",
+        gender: "ലിംഗം",
+        male: "പുരുഷൻ",
+        female: "സ്ത്രീ",
+        other: "മറ്റുള്ളവ",
+        state: "സംസ്ഥാനം",
+        city: "നഗരം",
+        address: "വിലാസം",
+        occupation: "തൊഴിൽ",
+        emergencyContact: "അടിയന്തിര ബന്ധപ്പെടാനുള്ള നമ്പർ",
+        registerSuccess: "രജിസ്ട്രേഷൻ വിജയകരം!",
+      },
+
+      // Doctor Dashboard
+      doctor: {
+        login: {
+          title: "ഡോക്ടർ ലോഗിൻ",
+          email: "ഇമെയിൽ",
+          invalidCredentials: "അസാധുവായ ഇമെയിൽ അല്ലെങ്കിൽ പാസ്വേഡ്",
+        },
+        dashboard: {
+          title: "ഡോക്ടർ ഡാഷ്ബോർഡ്",
+          patients: "രോഗികൾ",
+          appointments: "അപ്പോയിന്റ്മെന്റുകൾ",
+          records: "ആരോഗ്യ രേഖകൾ",
+          analytics: "വിശകലനങ്ങൾ",
+          newPatients: "പുതിയ രോഗികൾ",
+          totalPatients: "ആകെ രോഗികൾ",
+          recentRecords: "പുതിയ രേഖകൾ",
+        },
+        analytics: {
+          title: "വിശകലനങ്ങൾ",
+          patientStatistics: "രോഗികളുടെ സ്ഥിതിവിവരക്കണക്കുകൾ",
+          diseaseDistribution: "രോഗ വിതരണം",
+          ageGroups: "പ്രായ ഗ്രൂപ്പുകൾ",
+          monthlyTrends: "പ്രതിമാസ പ്രവണതകൾ",
+        },
+      },
+
+      // Migrant Dashboard
+      migrant: {
+        dashboard: {
+          title: "എന്റെ ആരോഗ്യ പോർട്ടൽ",
+          myRecords: "എന്റെ ആരോഗ്യ രേഖകൾ",
+          upcomingAppointments: "വരാനിരിക്കുന്ന അപ്പോയിന്റ്മെന്റുകൾ",
+          medications: "നിലവിലെ മരുന്നുകൾ",
+          recentVisits: "സമീപകാല ആശുപത്രി സന്ദർശനങ്ങൾ",
+          healthStatus: "ആരോഗ്യ നില",
+          documents: "മെഡിക്കൽ രേഖകൾ",
+        },
+        records: {
+          addRecord: "ആരോഗ്യ രേഖ ചേർക്കുക",
+          viewRecord: "രേഖ കാണുക",
+          deleteRecord: "രേഖ നീക്കം ചെയ്യുക",
+          recordType: "രേഖയുടെ തരം",
+          diagnosis: "രോഗനിർണയം",
+          prescription: "കുറിപ്പടി",
+          date: "തീയതി",
+          doctor: "ഡോക്ടർ",
+          hospital: "ആശുപത്രി",
+        },
+      },
+
+      // Health Records
+      healthRecord: {
+        title: "ആരോഗ്യ രേഖ",
+        type: "തരം",
+        description: "വിവരണം",
+        symptoms: "രോഗലക്ഷണങ്ങൾ",
+        diagnosis: "രോഗനിർണയം",
+        treatment: "ചികിത്സ",
+        medications: "മരുന്നുകൾ",
+        nextVisit: "അടുത്ത സന്ദർശന തീയതി",
+        attachments: "അറ്റാച്ച്മെന്റുകൾ",
+      },
+
+      // Errors
+      errors: {
+        required: "ഈ ഫീൽഡ് ആവശ്യമാണ്",
+        invalidPhone: "അസാധുവായ ഫോൺ നമ്പർ",
+        invalidEmail: "അസാധുവായ ഇമെയിൽ",
+        passwordMismatch: "പാസ്വേഡുകൾ പൊരുത്തപ്പെടുന്നില്ല",
+        weakPassword: "പാസ്വേഡ് വളരെ ദുർബലമാണ്",
+        serverError: "സെർവർ പിശക് സംഭവിച്ചു",
+        networkError: "നെറ്റ്വർക്ക് പിശക് സംഭവിച്ചു",
+      },
+    },
+  },
 };
 
 i18n
@@ -430,6 +710,7 @@ i18n
   .init({
     resources,
     fallbackLng: "en",
+    supportedLngs: ["en", "hi", "te", "ml", "bn"],
     interpolation: {
       escapeValue: false, // React already escapes values
     },

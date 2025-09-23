@@ -109,6 +109,8 @@ export default function Landing() {
                 <option value="en">English</option>
                 <option value="hi">हिंदी (Hindi)</option>
                 <option value="te">తెలుగు (Telugu)</option>
+                <option value="ml">മലയാളം (Malayalam)</option>
+                <option value="bn">বাংলা (Bengali)</option>
               </select>
             </div>
             <motion.button
