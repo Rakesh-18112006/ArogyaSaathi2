@@ -44,12 +44,12 @@ export default function Dashboard() {
   const [labReports, setLabReports] = useState<any[]>([]);
   const [quickNotes, setQuickNotes] = useState("");
   const [emergencyAlerts, setEmergencyAlerts] = useState<any[]>([]);
-  const [todayStats, setTodayStats] = useState({
+   const todayStats = {
     patients: 12,
     appointments: 8,
     emergencies: 2,
-    completed: 6,
-  });
+    completed: 5,
+  };
 
   const scannerRef = useRef<Html5QrcodeScanner | null>(null);
 
