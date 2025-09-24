@@ -6,13 +6,12 @@ import {
   MapPin,
   Activity,
   Shield,
-  Home,
+
   Calendar,
   FileText,
   Bell,
   User,
-  Settings,
-  LogOut,
+
   Menu,
   X,
   Search,

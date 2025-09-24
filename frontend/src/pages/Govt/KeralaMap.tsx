@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { MapPin, AlertTriangle, Users, Activity, Phone } from "lucide-react";
+import {  Users, Activity, Phone } from "lucide-react";
 
 const KeralaMap: React.FC = () => {
   const [selectedDistrict, setSelectedDistrict] = useState<string | null>(null);
