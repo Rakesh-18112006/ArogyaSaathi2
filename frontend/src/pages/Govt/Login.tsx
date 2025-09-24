@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { motion, AnimatePresence } from "framer-motion";
+import type { Variants } from "framer-motion";
 import {
   Mail,
   Lock,
@@ -69,7 +70,7 @@ export default function Login() {
     }
   };
 
-  const containerVariants = {
+  const containerVariants : Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -80,7 +81,7 @@ export default function Login() {
     },
   };
 
-  const itemVariants = {
+  const itemVariants : Variants= {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
@@ -185,7 +186,6 @@ export default function Login() {
             {/* Form */}
             <form onSubmit={handleLogin} className="space-y-6">
               {/* Email Field */}
-              {/* @ts-ignore */}
               <motion.div variants={itemVariants}>
                 <label className="block text-blue-100 text-sm font-medium mb-2">
                   Official Email Address
@@ -204,7 +204,6 @@ export default function Login() {
               </motion.div>
 
               {/* Password Field */}
-              {/* @ts-ignore */}
               <motion.div variants={itemVariants}>
                 <label className="block text-blue-100 text-sm font-medium mb-2">
                   Password
@@ -230,7 +229,7 @@ export default function Login() {
               </motion.div>
 
               {/* Remember Me & Forgot Password */}
-              {/* @ts-ignore */}
+             
               <motion.div
                 variants={itemVariants}
                 className="flex items-center justify-between"
