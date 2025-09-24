@@ -21,6 +21,7 @@ const resources = {
       userType: {
         migrant: "Migrant",
         doctor: "Doctor",
+        government: "Government",
       },
 
       // Navigation

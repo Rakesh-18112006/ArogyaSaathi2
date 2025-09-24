@@ -128,7 +128,8 @@ export async function getMigrantProfileIfGranted(req: Request, res: Response) {
 
 export async function createRecordIfGranted(req: Request, res: Response) {
   try {
-    const { migrantId, title, content } = req.body;
+    const migrantId = req.params.migrantId;
+    const { title, content } = req.body;
     const requesterId = (req as any).user?.id;
 
     if (!migrantId || !title || !content) {

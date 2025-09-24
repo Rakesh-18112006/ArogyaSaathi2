@@ -75,14 +75,14 @@ export default function Landing() {
       rating: 5,
     },
     {
-      name: "Dr. Priya Sharma",
+      name: "Dr. Harshith Mohan",
       role: "General Physician",
       content:
         "The platform makes it so easy to access patient records securely. Great for emergency situations.",
       rating: 5,
     },
     {
-      name: "Mohammed Ali",
+      name: "Parinitha Sri",
       role: "Factory Worker",
       content:
         "Finally, a healthcare solution that understands migrant workers' needs. Highly recommended!",
@@ -193,6 +193,19 @@ export default function Landing() {
                 {t("userType.doctor")}
                 <ArrowRight className="btn-icon" />
               </motion.button>
+              <motion.button
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: "0 10px 25px rgba(14, 165, 233, 0.3)",
+                }}
+                whileTap={{ scale: 0.95 }}
+                className="btn btn-secondary"
+                onClick={() => navigate("/govt/login")}
+              >
+                <i className="fas fa-user-md"></i>
+                {t("userType.government")}
+                <ArrowRight className="btn-icon" />
+              </motion.button>
             </div>
           </motion.div>
         </section>
@@ -269,7 +282,7 @@ export default function Landing() {
         </section>
 
         {/* CTA Section */}
-        <section className="cta-section">
+        {/* <section className="cta-section">
           <motion.div
             className="cta-content"
             initial={{ opacity: 0, y: 30 }}
@@ -292,7 +305,7 @@ export default function Landing() {
               <ArrowRight className="btn-icon" />
             </motion.button>
           </motion.div>
-        </section>
+        </section> */}
 
         <Footer />
       </motion.div>

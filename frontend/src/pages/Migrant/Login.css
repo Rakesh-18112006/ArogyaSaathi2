@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css");
 
 .login-container {
   min-height: 100vh;
@@ -8,7 +8,7 @@
   justify-content: center;
   align-items: center;
   padding: 20px;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .login-content {
@@ -140,6 +140,147 @@
   transition: all 0.3s ease;
   background-color: #f9fafb;
 }
+/* Phone Input Styles for Login */
+.login-phone-input-container {
+  display: flex;
+  align-items: center;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.login-phone-input-container:focus-within {
+  border-color: #0ea5e9;
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2);
+}
+
+.login-phone-prefix {
+  padding: 15px 20px;
+  background: #f8fafc;
+  border-right: 2px solid #e2e8f0;
+  color: #64748b;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.login-phone-input {
+  border: none !important;
+  box-shadow: none !important;
+  flex: 1;
+}
+
+.login-phone-hint {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+/* Enhanced existing styles for better consistency */
+.login-input-group {
+  margin-bottom: 1.5rem;
+}
+
+.login-input-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+.login-input {
+  width: 100%;
+  padding: 15px 20px;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.login-input:focus {
+  outline: none;
+  border-color: #0ea5e9;
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2);
+}
+
+/* Password Toggle */
+.login-password-toggle {
+  position: relative;
+}
+
+.login-password-toggle-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #64748b;
+  transition: color 0.3s ease;
+}
+
+.login-password-toggle-icon:hover {
+  color: #374151;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .login-phone-prefix {
+    padding: 12px 15px;
+    font-size: 0.9rem;
+  }
+
+  .login-phone-input {
+    padding: 12px 15px;
+  }
+
+  .login-phone-hint {
+    font-size: 0.75rem;
+  }
+}
+
+/* Loading Animation */
+.login-loading {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Button Styles */
+.login-button {
+  width: 100%;
+  padding: 15px 20px;
+  background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.login-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.login-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(16, 185, 129, 0.4);
+}
 
 .login-input:focus {
   outline: none;
@@ -219,7 +360,7 @@
 
 .login-divider::before,
 .login-divider::after {
-  content: '';
+  content: "";
   flex: 1;
   height: 1px;
   background: #e5e7eb;
@@ -264,36 +405,46 @@
 
 /* Animations */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideDown {
-  from { 
+  from {
     opacity: 0;
     transform: translateY(-20px);
   }
-  to { 
+  to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
 @keyframes scaleIn {
-  from { 
+  from {
     opacity: 0;
     transform: scale(0.95);
   }
-  to { 
+  to {
     opacity: 1;
     transform: scale(1);
   }
 }
 
 @keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 /* Responsive Design */
@@ -301,7 +452,7 @@
   .login-card {
     flex-direction: column;
   }
-  
+
   .login-image-section {
     display: none;
   }
@@ -311,21 +462,21 @@
   .login-form-section {
     padding: 30px 20px;
   }
-  
+
   .login-title {
     font-size: 1.8rem;
   }
-  
+
   .login-subtitle {
     font-size: 1rem;
   }
-  
+
   .login-links {
     flex-direction: column;
     gap: 10px;
     align-items: center;
   }
-  
+
   .login-social-buttons {
     flex-direction: column;
   }
@@ -333,7 +484,9 @@
 
 /* Loading animation */
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .login-loading {

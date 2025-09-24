@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "https://arogya-saathi.onrender.com/api", // your backend URL
+  baseURL: "http://localhost:5000/api", // your backend URL
   headers: { "Content-Type": "application/json" },
 });
 
@@ -12,3 +12,5 @@ axiosInstance.interceptors.request.use((config) => {
 });
 
 export default axiosInstance;
+
+//https://arogya-saathi.onrender.com

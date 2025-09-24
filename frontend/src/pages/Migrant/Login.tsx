@@ -16,8 +16,52 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.replace(/\D/g, "");
+
+    // If it starts with 91, ensure +91 prefix
+    if (value.startsWith("91") && value.length > 2) {
+      setPhone(`+${value}`);
+    }
+    // If it doesn't start with 91 but has 10 digits, add +91
+    else if (value.length === 10) {
+      setPhone(`+91${value}`);
+    }
+    // If user is typing and it's less than 10 digits, just update the number
+    else if (value.length > 0 && value.length <= 10) {
+      setPhone(`+91${value}`);
+    }
+    // If user clears the field, clear it completely
+    else if (value.length === 0) {
+      setPhone("");
+    }
+  };
+
+  const handlePhoneBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+    const value = e.target.value.replace(/\D/g, "");
+
+    // Ensure the phone number has exactly 10 digits after +91
+    if (value.length === 10) {
+      setPhone(`+91${value}`);
+    } else if (value.length > 0 && value.length < 10) {
+      toast.warning("Please enter a valid 10-digit phone number");
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Validate phone number before submitting
+    if (!phone || phone.replace(/\D/g, "").length !== 12) {
+      toast.error("Please enter a valid 10-digit phone number");
+      return;
+    }
+
+    if (!password) {
+      toast.error("Please enter your password");
+      return;
+    }
+
     setIsLoading(true);
 
     try {
@@ -35,6 +79,17 @@ export default function Login() {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const formatPhoneDisplay = (phone: string) => {
+    if (!phone) return "";
+
+    const digits = phone.replace(/\D/g, "");
+    if (digits.length === 12) {
+      // 91 + 10 digits
+      return digits.slice(2); // Return only the 10 digits without +91 for display
+    }
+    return phone.replace("+91", "");
   };
 
   return (
@@ -65,13 +120,21 @@ export default function Login() {
             >
               <div className="login-input-group">
                 <label className="login-input-label">{t("phoneNumber")}</label>
-                <input
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  placeholder={t("phoneNumber")}
-                  className="login-input"
-                  required
-                />
+                <div className="login-phone-input-container">
+                  <div className="login-phone-prefix">+91</div>
+                  <input
+                    value={formatPhoneDisplay(phone)}
+                    onChange={handlePhoneChange}
+                    onBlur={handlePhoneBlur}
+                    placeholder="Enter your 10-digit phone number"
+                    className="login-input login-phone-input"
+                    maxLength={10}
+                    required
+                  />
+                </div>
+                <div className="login-phone-hint">
+                  Enter your 10-digit mobile number
+                </div>
               </div>
 
               <div className="login-input-group">

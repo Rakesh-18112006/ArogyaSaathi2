@@ -6,6 +6,8 @@ import MigrantLogin from "../pages/Migrant/Login";
 import MigrantDashboard from "../pages/Migrant/Dashboard";
 import DoctorLogin from "../pages/Doctor/Login";
 import DoctorDashboard from "../pages/Doctor/Dashboard";
+import Login from "../pages/Govt/Login";
+import Whole from "../pages/Govt/Whole";
 
 export default function AppRoutes() {
   return (
@@ -17,6 +19,12 @@ export default function AppRoutes() {
       <Route path="/migrant/dashboard" element={<MigrantDashboard />} />
       <Route path="/doctor/login" element={<DoctorLogin />} />
       <Route path="/doctor/dashboard" element={<DoctorDashboard />} />
+      <Route
+        path="/govt/login"
+        element={<Login />}
+      />
+      <Route path="/govt/dashboard" element={<Whole />} />
+      <Route path="*" element={<div>404 Not Found</div>} />
     </Routes>
   );
 }
