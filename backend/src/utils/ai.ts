@@ -12,22 +12,25 @@ export async function summarizeMedicalRecords(text: string): Promise<string> {
   try {
     const prompt = `You are a medical AI assistant. Summarize the following medical records in 2-3 lines and provide an AI analysis report:\n\n${text}`;
 
-    // Use a stable model
-    const modelName = "models/gemini-2.5-flash";
+    const modelName = "models/gemini-2.5-flash"; // stable model
 
     const response = await axios.post(
       `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${config.ai.geminiKey}`,
       {
-        // Simplified content structure
-        contents: [
+        // Gemini 2.5 Flash expects messages
+        messages: [
           {
-            text: prompt,
+            author: "user",
+            content: [
+              {
+                type: "text",
+                text: prompt,
+              },
+            ],
           },
         ],
-        generationConfig: {
-          temperature: 0.3,
-          maxOutputTokens: 500, // Increased to allow longer summary
-        },
+        temperature: 0.3,
+        maxOutputTokens: 500,
       },
       {
         headers: {
@@ -36,7 +39,7 @@ export async function summarizeMedicalRecords(text: string): Promise<string> {
       }
     );
 
-    // New Gemini 2.5 Flash response structure
+    // Gemini 2.5 Flash response parsing
     const generatedText =
       response.data?.candidates?.[0]?.content?.[0]?.text ||
       "No summary returned.";
