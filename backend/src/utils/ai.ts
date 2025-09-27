@@ -13,7 +13,7 @@ export async function summarizeMedicalRecords(text: string): Promise<string> {
     const prompt = `You are a medical AI assistant. Summarize the following medical records in 2-3 lines and provide an AI analysis report:\n\n${text}`;
 
     const response = await axios.post(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${config.ai.geminiKey}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${config.ai.geminiKey}`,
       {
         contents: [
           {
