@@ -520,11 +520,24 @@
     appearance: none;
     cursor: pointer;
     transition: all 0.3s ease;
-    margin-left: 3px;
+    margin-left: 4px;
   }
 
   .hero-title {
     font-size: 1.6rem;
+  }
+  .help-btn {
+    padding: 0.5rem 0.5rem;
+    background: var(--primary-green);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius-small);
+    font-size: 0.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
   }
 
   .btn {
