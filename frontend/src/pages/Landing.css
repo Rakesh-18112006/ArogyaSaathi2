@@ -495,7 +495,7 @@
 
 @media (max-width: 480px) {
   .nav-logo-text {
-    font-size: 1.2rem;
+    font-size: 0.9rem;
   }
 
   .nav-logo {
@@ -514,13 +514,13 @@
     padding: 0.3rem 0.6rem 0.3rem 0.4rem;
     border: 2px solid #e2e8f0;
     border-radius: var(--border-radius-small);
-    font-size: 0.9rem;
+    font-size: 0.6rem;
     color: var(--text-light);
     background-color: white;
     appearance: none;
     cursor: pointer;
     transition: all 0.3s ease;
-    margin-left: 8px;
+    margin-left: 3px;
   }
 
   .hero-title {
