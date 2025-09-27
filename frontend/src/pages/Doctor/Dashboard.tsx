@@ -513,7 +513,7 @@ export default function Dashboard() {
                   </div>
 
                   {/* Action buttons */}
-                  <div className="doctor-action-buttons mt-4 flex gap-3">
+                  <div className="doctor-action-buttons mt-4 flex md:gap-3 gap-1 ">
                     <motion.button
                       onClick={() => setShowCreateForm(true)}
                       className="doctor-btn doctor-btn-primary"
